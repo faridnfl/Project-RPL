@@ -9,7 +9,7 @@
         <div class="nav-bar">
             <ul>
                 <li><NuxtLink to="/">HOME</NuxtLink></li>
-                <li>|</li>
+                <li class="garis-tengah">|</li>
                 <li><NuxtLink to="/dashboard">DASHBOARD</NuxtLink></li>
             </ul>
         </div>
