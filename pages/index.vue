@@ -17,9 +17,11 @@
                     <p>Inbound are overseas students and lecturers who visit Unhas for Joint Program, Research, BIPA, Summer Program, Short Study Program, Internship, Students Exchange, Credit-Earning or become Speakers/Participants 
                         in Seminar/Symposium/Conference, Degree Program, Double Degree Program, and Benchmark Program.</p>
                     <div class="button-bawah">
-                        <div class="button">
-                            <p>Join Now</p>
-                        </div>
+                        <NuxtLink to="/inbound">
+                            <div class="button">
+                                <p>Join Now</p>
+                            </div>
+                        </NuxtLink>
                     </div>
                 </div>
                 <div class="card card2">

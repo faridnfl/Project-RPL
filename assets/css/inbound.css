@@ -1,0 +1,157 @@
+.inbound-isi {
+    background-color: rgba(243, 243, 243, 0.849);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    cursor:default;
+}
+
+.inbound-board {
+    background-color: white;
+    width: 55%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inbound-top {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 14px;
+    font-family: Roboto;
+    letter-spacing: 3px;
+    display: flex;
+}
+
+.inbound-top h1 {
+    border-bottom: 1px solid black;
+    padding: 0px 0px 20px 0px;
+    margin: 0px;
+}
+
+.form {
+    margin-top: 40px;
+}
+
+.form1 {
+    background-color: rgb(227, 227, 227);
+    padding: 10px 0px 0px 0px;
+    width: 680px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.form1 input {
+    margin: 5px 30px;
+    padding: 10px 5px;
+    font-size: 17px;
+}
+
+.form1 p {
+    font-size: 18px;
+    padding: 0px 30px;
+    margin: 5px 0px 0px 0px;
+}
+
+.form2 {
+    background-color: rgb(227, 227, 227);
+    padding: 10px 0px 0px 0px;
+    margin-top: 50px;
+    width: 680px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.form2 input {
+    margin: 5px 30px;
+    padding: 10px 5px;
+    font-size: 17px;
+    
+}
+
+.form2 p {
+    font-size: 18px;
+    padding: 0px 30px;
+    margin: 5px 0px 0px 0px;
+}
+
+.form2 select {
+    margin: 5px 30px;
+    padding: 10px 5px;
+    font-size: 17px;
+}
+
+.form3 {
+    background-color: rgb(227, 227, 227);
+    padding: 10px 0px 0px 0px;
+    margin-top: 50px;
+    width: 680px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.form3 input {
+    margin: 5px 30px;
+    padding: 10px 5px;
+    font-size: 17px;
+}
+
+.form3 p {
+    font-size: 18px;
+    padding: 0px 30px;
+    margin: 5px 0px 0px 0px;
+}
+
+.form3 select {
+    margin: 5px 30px;
+    padding: 10px 5px;
+    font-size: 17px;
+}
+
+.date {
+    display: flex;
+   margin: 0px 30px;
+}
+
+.date_arrival {
+    width: 50%;
+}
+
+.date_departure {
+    width: 50%;
+}
+
+.date_departure p {
+    padding: 0px;
+    font-size: 18px;
+}
+
+.date_departure input {
+    width: 90%;
+    margin: 0px;
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.date_arrival input {
+    width: 90%;
+    margin: 0px;
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.date_arrival p {
+    padding: 0px;
+    font-size: 18px;
+}
