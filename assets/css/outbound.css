@@ -1,4 +1,4 @@
-.outbound-isi {
+.inbound-isi {
     background-color: rgba(243, 243, 243, 0.849);
     width: 100%;
     display: flex;
@@ -7,7 +7,7 @@
     cursor:default;
 }
 
-.outbound-board {
+.inbound-board {
     background-color: white;
     width: 60%;
     height: auto;
@@ -19,7 +19,7 @@
     flex-direction: column;
 }
 
-.outbound-top {
+.inbound-top {
     text-align: center;
     padding-top: 30px;
     font-size: 14px;
@@ -28,7 +28,7 @@
     display: flex;
 }
 
-.outbound-top h1 {
+.inbound-top h1 {
     border-bottom: 1px solid black;
     padding: 0px 0px 20px 0px;
     margin: 0px;
@@ -38,29 +38,29 @@
     margin-top: 40px;
 }
 
-.form1 {
+.form1-outbound {
     background-color: rgb(227, 227, 227);
     padding: 10px 0px 0px 0px;
     width: 680px;
-    height: 335px;
+    height: 260px;
     display: flex;
     flex-direction: column;
     border-radius: 15px;
 }
 
-.form1 input {
+.form1-outbound input {
     margin: 5px 30px;
     padding: 10px 5px;
     font-size: 17px;
 }
 
-.form1 p {
+.form1-outbound p {
     font-size: 18px;
     padding: 0px 30px;
     margin: 5px 0px 0px 0px;
 }
 
-.form2 {
+.form2-outbound {
     background-color: rgb(227, 227, 227);
     padding: 10px 0px 0px 0px;
     margin-top: 30px;
@@ -71,49 +71,72 @@
     border-radius: 15px;
 }
 
-.form2 input {
+.form2-outbound input {
     margin: 5px 30px;
     padding: 10px 5px;
     font-size: 17px;
     
 }
 
-.form2 p {
+.form2-outbound p {
     font-size: 18px;
     padding: 0px 30px;
     margin: 5px 0px 0px 0px;
 }
 
-.form2 select {
+.form2-outbound select {
     margin: 5px 30px;
     padding: 10px 5px;
     font-size: 17px;
 }
 
-.form3 {
+.form3-outbound {
     background-color: rgb(227, 227, 227);
     padding: 10px 0px 0px 0px;
     margin-top: 30px;
     width: 680px;
-    height: 710px;
+    height: 190px;
     display: flex;
     flex-direction: column;
     border-radius: 15px;
 }
 
-.form3 input {
+.form3-outbound input {
     margin: 5px 30px;
     padding: 10px 5px;
     font-size: 17px;
 }
 
-.form3 p {
+.form3-outbound p {
     font-size: 18px;
     padding: 0px 30px;
     margin: 10px 0px 0px 0px;
 }
 
-.form3 select {
+.form4-outbound {
+    background-color: rgb(227, 227, 227);
+    padding: 10px 0px 0px 0px;
+    margin-top: 30px;
+    width: 680px;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.form4-outbound input {
+    margin: 5px 30px;
+    padding: 10px 5px;
+    font-size: 17px;
+}
+
+.form4-outbound p {
+    font-size: 18px;
+    padding: 0px 30px;
+    margin: 10px 0px 0px 0px;
+}
+
+.form4-outbound select {
     margin: 5px 30px;
     padding: 10px 5px;
     font-size: 17px;
@@ -160,6 +183,33 @@
     width: 35%;
 }
 
+.form5-outbound {
+    background-color: rgb(227, 227, 227);
+    padding: 10px 0px 0px 0px;
+    width: 680px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.form5-outbound input {
+    margin: 5px 30px;
+    padding: 10px 5px;
+    font-size: 17px;
+}
+
+.form5-outbound p {
+    font-size: 18px;
+    padding: 0px 30px;
+    margin: 10px 0px 0px 0px;
+}
+
+.mitra-luar {
+    font-size: 21px;
+    margin: 30px 0px 10px 0px;
+}
+
 .inbound-button {
     margin-top: 10px;
     width: 30%;
@@ -175,7 +225,7 @@
     font-size: 19px;
 }
 
-.inbound-button a {
+.outbound-button a {
     text-decoration: none;
     color: white;
 }

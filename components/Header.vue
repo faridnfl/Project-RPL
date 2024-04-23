@@ -4,7 +4,9 @@
 
 <template>
         <div class="header-top">
-            <img src="/assets/logo.png">
+            <NuxtLink to="/">
+                <img src="/assets/logo.png">
+            </NuxtLink>
         </div>
         <div class="nav-bar">
             <ul>
