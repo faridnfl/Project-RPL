@@ -7,7 +7,8 @@
         <div class="board">
             <div class="top">
                 <h1>Inbound and Outbound Form<br>Hasanuddin University.</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the industry's standard dummy text ever since the  1500s, when an unknown printer took a galley of type and scrambled it to  make a type specimen book. </p>
+                <p>Outbound are Unhas students and lecturers who go abroad for joint programs, research, internships, student exchanges, etc. Inbound refers to students and lecturers from abroad who visit Hasanuddin University to collaborate in academic activities such as joint programs, research, internships, student exchanges.
+                </p>
             </div>
             <div class="line"></div>
             <div class="bottom">
