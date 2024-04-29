@@ -1,4 +1,4 @@
-.outbound-isi {
+.inbound-isi {
     background-color: rgba(243, 243, 243, 0.849);
     width: 100%;
     display: flex;
@@ -7,7 +7,7 @@
     cursor:default;
 }
 
-.outbound-board {
+.inbound-board {
     background-color: white;
     width: 60%;
     height: auto;
@@ -19,7 +19,7 @@
     flex-direction: column;
 }
 
-.outbound-top {
+.inbound-top {
     text-align: center;
     padding-top: 30px;
     font-size: 14px;
@@ -28,7 +28,7 @@
     display: flex;
 }
 
-.outbound-top h1 {
+.inbound-top h1 {
     border-bottom: 1px solid black;
     padding: 0px 0px 20px 0px;
     margin: 0px;
@@ -178,4 +178,8 @@
 .inbound-button a {
     text-decoration: none;
     color: white;
+}
+
+.inbound-button p {
+    cursor: pointer;
 }
