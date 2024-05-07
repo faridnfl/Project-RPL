@@ -110,7 +110,7 @@
 
 <script setup>
 import { ref } from 'vue';
-
+import { useRouter } from 'vue-router';
 
 const formInbound = ref({
   namaPenginput: '',
@@ -130,7 +130,33 @@ const formInbound = ref({
   dokumen: '',
 });
 
+const fieldNames = {
+  namaPenginput: 'Name of Data Submitter',
+  namaTamu: 'Guest Name',
+  kewarganegaraan: 'Nationality',
+  emailTamu: "Guest Email",
+  institusiAsal: 'Home Institution',
+  posisi: 'Position',
+  namaProgram: 'Program/Event Name',
+  tujuanInbound: 'Purpose of inbound',
+  tipeProgram: 'Type of Program',
+  tanggalKedatangan: 'Arrival Date',
+  tanggalKeberangkatan: 'Departure Date',
+  durasiProgram: 'Program Duration',
+  penyelenggara: 'Host',
+  namaPenanggungJawab: 'Person in Charge',
+  dokumen: 'Supporting Documents',
+};
+
+
 const handleSubmit = async () => {
+  for (const key in formInbound.value) {
+    if (!formInbound.value[key]) {
+      alert(`${fieldNames[key]} must be filled!`);
+      return;
+    }
+  }
+  
   try {
     const { data: responseData } = await $fetch('http://localhost:8055/items/inbound', {
       method: 'post',
@@ -152,7 +178,7 @@ const handleSubmit = async () => {
         dokumen: formInbound.value.dokumen,
       },
     });
-
+    await navigateTo('/responden')
     console.log(responseData); 
   } catch (error) {
     console.error('Error submitting form:', error);

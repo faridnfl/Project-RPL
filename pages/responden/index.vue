@@ -12,7 +12,9 @@
       </div>
       <div class="bottom-responden">
         <p>Your data has been recorded.</p>
-        <p class="responden-back">Back</p>
+        <NuxtLink to="/">
+          <p class="responden-back">Back</p>
+        </NuxtLink>
       </div>
     </div>
   </div>
