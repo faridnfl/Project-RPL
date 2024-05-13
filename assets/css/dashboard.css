@@ -82,3 +82,21 @@
     margin-left: 20px;
     font-family: Montserrat;
 }
+
+.jvm-tooltip {
+    position: absolute;
+    z-index: 9999;
+    border-radius: 3px;
+    background-color: rgb(201, 35, 35);
+    font-family: sans-serif, Verdana;
+    font-size: smaller;
+    box-shadow: 1px 2px 12px #0003;
+    padding: 3px 5px;
+    white-space: nowrap;
+    display: none;
+    color: #fff;
+}
+
+.jvm-tooltip.active {
+    display: block;
+}

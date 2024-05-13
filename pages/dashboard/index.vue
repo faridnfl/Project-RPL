@@ -30,6 +30,7 @@
 import { onMounted, ref } from 'vue'
 import jsVectorMap from 'jsvectormap'
 import 'jsvectormap/dist/maps/world-merc'
+import { Tooltip } from '@amcharts/amcharts5';
 
 let map = null
 const inboundData = ref([]);
@@ -42,10 +43,10 @@ onMounted(async () => {
     map = new jsVectorMap({
         selector: '#map',
         map: 'world_merc',
-        draggable: false,
+        draggable: true,
         zoomButtons: false, 
-        showTooltip: false, 
-        zoomOnScroll: false,
+        showTooltip: true, 
+        zoomOnScroll: true,
         regionStyle: {
             initial: {
                 fill: '#c7c7c7',
@@ -54,9 +55,23 @@ onMounted(async () => {
         visualizeData: {
             scale: ['#fdb5b5', '#e14f4f', '#8d0f0f', '#ff0000'],
             values: values.value
-        }
+        },
+        onRegionTooltipShow(event, tooltip, code) {
+            const countryData = inboundData.value.find(entry => entry.Kewarganegaraan === code);
+            if (countryData) {
+                
+                const countryName = countryData.Kewarganegaraan; 
+                const countryCount = countryCodeCount[code] || 0;
+                tooltip.text(`<p>${countryName} - ${countryCount}</p>`, true);
+            } else {
+                
+                tooltip.text(`<p>${tooltip.text()}`, true);
+            }
+        },
     })
 })
+
+
 
 async function fetchDataFromDirectus() {
     const response = await fetch('http://localhost:8055/items/inbound')
@@ -67,7 +82,6 @@ async function fetchDataFromDirectus() {
         const countryCode = entry.Kewarganegaraan
         
         countryCodeCount[countryCode] = (countryCodeCount[countryCode] || 0) + 1
-        console.log(countryCodeCount)
     })
     values.value = countryCodeCount
     }

@@ -17,7 +17,7 @@
             <p>Kewarganegaraan (Nationality)*</p>
             <input type="text" v-model="formInbound.kewarganegaraan" list="countryList" placeholder="Your Answer...">
             <datalist id="countryList">
-              <option v-for="(code, country) in countries" :value="country">{{ code }}</option>
+              <option v-for="(code, country) in countries" :value="country">{{code}}</option>
             </datalist>
             <p>E-mail Tamu (Guest's email)*</p>
             <input type="text" v-model="formInbound.emailTamu" placeholder="Your Answer...">
