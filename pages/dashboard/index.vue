@@ -27,33 +27,48 @@
 
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import jsVectorMap from 'jsvectormap'
 import 'jsvectormap/dist/maps/world-merc'
 
 let map = null
+const inboundData = ref([]);
+let countryCodeCount = {}
+let values = ref({})
 
-onMounted(() => {
-  map = new jsVectorMap({
-    selector: '#map',
-    map: 'world_merc',
-    draggable: false,
-    zoomButtons: false, 
-    showTooltip: false, 
-    zoomOnScroll: false,
-    regionStyle: {
-        initial: {
-            fill: '#c7c7c7',
+onMounted(async () => {
+    await fetchDataFromDirectus()
+    console.log('Nilai values setelah diambil dari Directus:', values.value)
+    map = new jsVectorMap({
+        selector: '#map',
+        map: 'world_merc',
+        draggable: false,
+        zoomButtons: false, 
+        showTooltip: false, 
+        zoomOnScroll: false,
+        regionStyle: {
+            initial: {
+                fill: '#c7c7c7',
+            }
+        },
+        visualizeData: {
+            scale: ['#c7c7c7', '#ff0000'],
+            values: values.value
         }
-    },
-    visualizeData: {
-        scale: ['#c7c7c7', '#ff0000'],
-        values: {
-            EG: 20,
-            ID: 10,
-            CA: 15,
-            BR: 5,
-        }
+    })
+
+    
+    async function fetchDataFromDirectus() {
+        // Gantikan 'URL' dengan URL yang benar untuk mengambil data dari Directus
+        const response = await fetch('http://localhost:8055/items/inbound')
+        const data = await response.json()
+        inboundData.value = data.data
+    
+        inboundData.value.forEach(entry => {
+            const countryCode = entry.Kewarganegaraan
+            countryCodeCount[countryCode] = (countryCodeCount[countryCode] || 0) + 1
+        })
+        values.value = countryCodeCount
     }
-  })
 })
 </script>
