@@ -1,5 +1,5 @@
 .dashboard-isi {
-    background-color: rgba(243, 243, 243, 0.849);
+    background-color: rgb(255, 255, 255);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@
 }
 
 .dashboard-board {
-    background-color: white;
+    background-color:rgb(227, 227, 227);
     width: 75%;
     height: 620px;
     border-radius: 20px;
@@ -55,4 +55,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.dashboard-board{
+    display: flex;
+
+}
+
+.board-map {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Pusatkan secara horizontal */
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 25px;
+    height: 370px;
+    width: 600px;
+    border-radius: 20px;
+}
+
+#map {
+    margin: 0 auto; /* Menengahkan horizontal */
+}
+
+.board-map p {
+    margin-left: 20px;
+    font-family: Montserrat;
+}
+
+.map {
+
 }

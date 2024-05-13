@@ -14,7 +14,13 @@
             </div>
         </div>
         <div class="dashboard-board">
-            <div id="map" style="width: 700px; height: 300px"></div>
+            <div>
+        
+            </div>
+            <div class="board-map">
+                <p>Geography Based Traffic</p>
+                <span id="map" style="width: 500px; height: 300px;"></span>
+            </div>
         </div>
     </div>
 </template>
@@ -30,12 +36,22 @@ onMounted(() => {
   map = new jsVectorMap({
     selector: '#map',
     map: 'world_merc',
+    draggable: false,
+    zoomButtons: false, 
+    showTooltip: false, 
+    zoomOnScroll: false,
     regionStyle: {
         initial: {
-            fill: '#EFEFEF',
-            stroke: "#676767",
-            strokeWidth: 0.5,
-            fillOpacity: 3
+            fill: '#c7c7c7',
+        }
+    },
+    visualizeData: {
+        scale: ['#c7c7c7', '#ff0000'],
+        values: {
+            EG: 20,
+            ID: 10,
+            CA: 15,
+            BR: 5,
         }
     }
   })
