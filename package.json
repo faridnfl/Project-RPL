@@ -10,10 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@amcharts/amcharts5": "^5.9.7",
+    "@amcharts/amcharts5-geodata": "^5.1.2",
+    "@nuxtjs/google-fonts": "^3.0.0-1",
+    "jsvectormap": "^1.5.3",
+    "jvectormap-next": "^3.1.1",
     "nuxt": "^3.11.1",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
-    "@nuxtjs/google-fonts": "^3.0.0-1"
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.2.0"
