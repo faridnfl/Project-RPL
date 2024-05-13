@@ -52,23 +52,23 @@ onMounted(async () => {
             }
         },
         visualizeData: {
-            scale: ['#c7c7c7', '#ff0000'],
+            scale: ['#fdb5b5', '#e14f4f', '#8d0f0f', '#ff0000'],
             values: values.value
         }
     })
-
-    
-    async function fetchDataFromDirectus() {
-        // Gantikan 'URL' dengan URL yang benar untuk mengambil data dari Directus
-        const response = await fetch('http://localhost:8055/items/inbound')
-        const data = await response.json()
-        inboundData.value = data.data
-    
-        inboundData.value.forEach(entry => {
-            const countryCode = entry.Kewarganegaraan
-            countryCodeCount[countryCode] = (countryCodeCount[countryCode] || 0) + 1
-        })
-        values.value = countryCodeCount
-    }
 })
+
+async function fetchDataFromDirectus() {
+    const response = await fetch('http://localhost:8055/items/inbound')
+    const data = await response.json()
+    inboundData.value = data.data
+    
+    inboundData.value.forEach(entry => {
+        const countryCode = entry.Kewarganegaraan
+        
+        countryCodeCount[countryCode] = (countryCodeCount[countryCode] || 0) + 1
+        console.log(countryCodeCount)
+    })
+    values.value = countryCodeCount
+    }
 </script>
