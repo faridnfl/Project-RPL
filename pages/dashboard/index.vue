@@ -14,12 +14,18 @@
             </div>
         </div>
         <div class="dashboard-board">
-            <div>
-        
+            <div class="board-top">
+                <div class="reg">
+                    <img src="/assets/profile.png">
+                    <p id="reg-number">{{ totalRegistrations }}</p>
+                    <p>Total Registration</p>
+                </div>
             </div>
-            <div class="board-map">
-                <p>Geography Based Traffic</p>
-                <span id="map" style="width: 500px; height: 300px;"></span>
+            <div class="board-bottom">
+                <div class="map">
+                    <p>Geography Based Traffic</p>
+                    <div id="map" style="width: 100%; height: 80%"> </div>
+                </div>
             </div>
         </div>
     </div>
@@ -30,12 +36,13 @@
 import { onMounted, ref } from 'vue'
 import jsVectorMap from 'jsvectormap'
 import 'jsvectormap/dist/maps/world-merc'
-import { Tooltip } from '@amcharts/amcharts5';
+
 
 let map = null
 const inboundData = ref([]);
 let countryCodeCount = {}
 let values = ref({})
+const totalRegistrations = ref(0);
 
 onMounted(async () => {
     await fetchDataFromDirectus()
@@ -50,7 +57,7 @@ onMounted(async () => {
         regionStyle: {
             initial: {
                 fill: '#c7c7c7',
-            }
+            },
         },
         visualizeData: {
             scale: ['#fdb5b5', '#e14f4f', '#8d0f0f', '#ff0000'],
@@ -71,12 +78,12 @@ onMounted(async () => {
     })
 })
 
-
-
 async function fetchDataFromDirectus() {
     const response = await fetch('http://localhost:8055/items/inbound')
     const data = await response.json()
     inboundData.value = data.data
+
+    totalRegistrations.value = inboundData.value.length;
     
     inboundData.value.forEach(entry => {
         const countryCode = entry.Kewarganegaraan
