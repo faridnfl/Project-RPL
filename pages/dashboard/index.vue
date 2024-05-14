@@ -20,6 +20,11 @@
                     <p id="reg-number">{{ totalRegistrations }}</p>
                     <p>Total Registration</p>
                 </div>
+                <div class="institution">
+                    <img src="/assets/institution.png">
+                    <p id="reg-number">{{ totalInstitutions }}</p>
+                    <p>Total Institution</p>
+                </div>
             </div>
             <div class="board-bottom">
                 <div class="map">
@@ -43,6 +48,7 @@ const inboundData = ref([]);
 let countryCodeCount = {}
 let values = ref({})
 const totalRegistrations = ref(0);
+const totalInstitutions = ref(0);
 
 onMounted(async () => {
     await fetchDataFromDirectus()
@@ -84,12 +90,15 @@ async function fetchDataFromDirectus() {
     inboundData.value = data.data
 
     totalRegistrations.value = inboundData.value.length;
+    const institutionsSet = new Set();
     
     inboundData.value.forEach(entry => {
         const countryCode = entry.Kewarganegaraan
         
         countryCodeCount[countryCode] = (countryCodeCount[countryCode] || 0) + 1
+        institutionsSet.add(entry.institusiAsal);
     })
     values.value = countryCodeCount
+    totalInstitutions.value = institutionsSet.size;
     }
 </script>

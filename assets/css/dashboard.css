@@ -72,6 +72,7 @@
     height: 50%;
     padding-top: 50px;
     padding-left: 25px;
+    display: flex;
 }
 
 .board-bottom {
@@ -125,6 +126,7 @@
     width: 23%;
     height: 75%;
     border-radius: 15px;
+    margin-right: 30px;
 }
 
 .reg p {
@@ -144,4 +146,25 @@
 #reg-number {
     font-size: 50px;
     margin-top: 15px;
+}
+
+.institution {
+    background-color: white;
+    width: 23%;
+    height: 75%;
+    border-radius: 15px;
+}
+
+.institution img {
+    margin-top: 25px;
+    margin-left: 30px;
+    width: 13%;
+}
+
+.institution p {
+    margin: 0px;
+    padding-left: 30px;
+    font-family: Montserrat;
+    font-size: 18px;
+    margin-top: 5px;
 }
