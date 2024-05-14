@@ -42,34 +42,37 @@
 
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 import jsVectorMap from 'jsvectormap'
 import 'jsvectormap/dist/maps/world-merc'
-import Chart from 'chart.js/auto';
-
+import Chart from 'chart.js/auto'
 
 let map = null
-const inboundData = ref([]);
+let piechart = null
+
+const inboundData = ref([])
 let countryCodeCount = {}
 let values = ref({})
-const totalRegistrations = ref(0);
-const totalInstitutions = ref(0);
+const totalRegistrations = ref(0)
+const totalInstitutions = ref(0)
 const pieChartData = ref([0, 0, 0])
-
 
 onMounted(async () => {
     await fetchDataFromDirectus()
-    console.log('Nilai values setelah diambil dari Directus:', values.value)
 
     const ctx = document.getElementById('piechart')
-    
+
+    if (map) {
+        map.destroy()
+    }
+    document.getElementById('map').innerHTML = '';
 
     map = new jsVectorMap({
         selector: '#map',
         map: 'world_merc',
         draggable: true,
-        zoomButtons: false, 
-        showTooltip: true, 
+        zoomButtons: false,
+        showTooltip: true,
         zoomOnScroll: true,
         regionStyle: {
             initial: {
@@ -81,55 +84,62 @@ onMounted(async () => {
             values: values.value
         },
         onRegionTooltipShow(event, tooltip, code) {
-            const countryData = inboundData.value.find(entry => entry.Kewarganegaraan === code);
+            const countryData = inboundData.value.find(entry => entry.Kewarganegaraan === code)
             if (countryData) {
-                
-                const countryName = countryData.Kewarganegaraan; 
-                const countryCount = countryCodeCount[code] || 0;
-                tooltip.text(`<p>${countryName} - ${countryCount}</p>`, true);
+                const countryName = countryData.Kewarganegaraan
+                const countryCount = countryCodeCount[code] || 0
+                tooltip.text(`<p>${countryName} - ${countryCount}</p>`, true)
             } else {
-                
-                tooltip.text(`<p>${tooltip.text()}`, true);
+                tooltip.text(`<p>${tooltip.text()}`, true)
             }
         },
     })
 
-    const piechart = new Chart(ctx, {
+    piechart = new Chart(ctx, {
         type: 'doughnut',
-        data: data,
+        data: {
+            datasets: [{
+                data: pieChartData.value,
+                backgroundColor: [
+                    'rgb(201, 35, 35)',
+                    'rgb(112, 209, 115)',
+                    'rgb(248, 243, 1)'
+                ],
+                hoverOffset: 4
+            }],
+            labels: [
+                'Online',
+                'Offline',
+                'Hybrid'
+            ]
+        },
     })
 })
 
-const data = {
-        datasets: [{
-            data: pieChartData.value,
-            backgroundColor: [
-                'rgb(201, 35, 35)',
-                'rgb(112, 209, 115)',
-                'rgb(248, 243, 1)'
-            ],
-            hoverOffset: 4
-        }],
-        labels: [
-            'Offline',
-            'Online',
-            'Hybrid'
-        ]
-    };
+onBeforeUnmount(() => {
+    if (map) {
+        map.destroy()
+        map = null
+    }
+    if (piechart) {
+        piechart.destroy()
+        piechart = null
+    }
+})
 
 async function fetchDataFromDirectus() {
     const response = await fetch('http://localhost:8055/items/inbound')
     const data = await response.json()
     inboundData.value = data.data
 
-    totalRegistrations.value = inboundData.value.length;
-    const institutionsSet = new Set();
+    totalRegistrations.value = inboundData.value.length
+    const institutionsSet = new Set()
     
     inboundData.value.forEach(entry => {
         const countryCode = entry.Kewarganegaraan
         
         countryCodeCount[countryCode] = (countryCodeCount[countryCode] || 0) + 1
-        institutionsSet.add(entry.institusiAsal);
+        institutionsSet.add(entry.institusiAsal)
 
         if (entry.tipeProgram === 'Online') {
             pieChartData.value[0]++
@@ -140,6 +150,6 @@ async function fetchDataFromDirectus() {
         }
     })
     values.value = countryCodeCount
-    totalInstitutions.value = institutionsSet.size;
-    }
+    totalInstitutions.value = institutionsSet.size
+}
 </script>
