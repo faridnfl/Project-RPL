@@ -31,6 +31,10 @@
                     <p>Geography Based Traffic</p>
                     <div id="map" style="width: 100%; height: 80%"> </div>
                 </div>
+                <div class="pie">
+                    <p>Type Of Program</p>
+                    <canvas id="piechart" style="width: 80%;"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -41,6 +45,7 @@
 import { onMounted, ref } from 'vue'
 import jsVectorMap from 'jsvectormap'
 import 'jsvectormap/dist/maps/world-merc'
+import Chart from 'chart.js/auto';
 
 
 let map = null
@@ -49,10 +54,16 @@ let countryCodeCount = {}
 let values = ref({})
 const totalRegistrations = ref(0);
 const totalInstitutions = ref(0);
+const pieChartData = ref([0, 0, 0])
+
 
 onMounted(async () => {
     await fetchDataFromDirectus()
     console.log('Nilai values setelah diambil dari Directus:', values.value)
+
+    const ctx = document.getElementById('piechart')
+    
+
     map = new jsVectorMap({
         selector: '#map',
         map: 'world_merc',
@@ -82,7 +93,29 @@ onMounted(async () => {
             }
         },
     })
+
+    const piechart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+    })
 })
+
+const data = {
+        datasets: [{
+            data: pieChartData.value,
+            backgroundColor: [
+                'rgb(201, 35, 35)',
+                'rgb(112, 209, 115)',
+                'rgb(248, 243, 1)'
+            ],
+            hoverOffset: 4
+        }],
+        labels: [
+            'Offline',
+            'Online',
+            'Hybrid'
+        ]
+    };
 
 async function fetchDataFromDirectus() {
     const response = await fetch('http://localhost:8055/items/inbound')
@@ -97,6 +130,14 @@ async function fetchDataFromDirectus() {
         
         countryCodeCount[countryCode] = (countryCodeCount[countryCode] || 0) + 1
         institutionsSet.add(entry.institusiAsal);
+
+        if (entry.tipeProgram === 'Online') {
+            pieChartData.value[0]++
+        } else if (entry.tipeProgram === 'Offline') {
+            pieChartData.value[1]++
+        } else if (entry.tipeProgram === 'Hybrid') {
+            pieChartData.value[2]++
+        }
     })
     values.value = countryCodeCount
     totalInstitutions.value = institutionsSet.size;

@@ -13,6 +13,7 @@
     "@amcharts/amcharts5": "^5.9.7",
     "@amcharts/amcharts5-geodata": "^5.1.2",
     "@nuxtjs/google-fonts": "^3.0.0-1",
+    "chart.js": "^4.4.2",
     "jsvectormap": "^1.5.3",
     "jvectormap-next": "^3.1.1",
     "nuxt": "^3.11.1",

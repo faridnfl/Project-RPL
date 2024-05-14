@@ -80,14 +80,16 @@
     width: 100%;
     padding-left: 25px;
     padding-bottom: 15px;
+    display: flex;
 }
 
 .map {
-    width: 50%;
+    width: 48%;
     background-color: white;
     height: 113%;
     margin-top: -40px;
     border-radius: 15px;
+    margin-right: 20px;
 }
 
 #map {
@@ -126,7 +128,7 @@
     width: 23%;
     height: 75%;
     border-radius: 15px;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .reg p {
@@ -167,4 +169,24 @@
     font-family: Montserrat;
     font-size: 18px;
     margin-top: 5px;
+}
+
+.pie {
+    background-color: white;
+    width: 23%;
+    height: 99%;
+    border-radius: 15px;
+}
+
+#piechart {
+    margin: auto;
+    margin-top: 10px;
+}
+
+.pie p {
+    margin: 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: Montserrat;
+    font-size: 18px;
 }
