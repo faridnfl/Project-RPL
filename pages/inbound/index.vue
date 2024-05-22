@@ -42,7 +42,7 @@
             <p>Tujuan Inbound (Purpose of inbound)*</p>
             <select v-model="formInbound.tujuanInbound">
               <option disabled selected value="">Choose...</option>
-              <option value="Participate inshort course/training">Participate inshort course/training</option>
+              <option value="Participate Inshort Course/Training">Participate inshort course/training</option>
               <option value="Guest Lecture/Visiting Lecture/Public Lecture">Guest Lecture/Visiting Lecture/Public Lecture</option>
               <option value="Joint Research">Joint Research</option>
               <option value="Oral Presentation">Oral Presentation</option>

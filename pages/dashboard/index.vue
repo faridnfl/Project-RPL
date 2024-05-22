@@ -27,7 +27,18 @@
                 </div>
                 <div class="pie">
                     <p>Type Of Program</p>
-                    <canvas id="piechart" style="width: 75%; height: 50%"></canvas>
+                    <canvas id="piechart" style="width: 70%; height: 50%"></canvas>
+                </div>
+                <div class="tujuan">
+                    <p>Purpose of Inbound</p>
+                    <div class="list-tujuan">
+                        <ul>
+                            <li v-for="purpose in purposeData" :key="purpose.name" class="purpose-item">
+                                <span class="purpose-name">{{ purpose.name }}</span>
+                                <span class="purpose-count">{{ purpose.count }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="board-bottom">
@@ -37,7 +48,7 @@
                 </div>
                 <div class="bar">
                     <p>Position</p>
-                    <canvas id="barchart" style="width: 95%; height: 85%;"></canvas>
+                    <canvas id="barchart" style="width: 500px;"></canvas>
                 </div>
             </div>
         </div>
@@ -62,6 +73,7 @@ const totalRegistrations = ref(0)
 const totalInstitutions = ref(0)
 const pieChartData = ref([0, 0, 0])
 const barChartData = ref([0, 0, 0, 0, 0, 0])
+const purposeData = ref([])
 
 onMounted(async () => {
     await fetchDataFromDirectus()
@@ -153,6 +165,7 @@ onMounted(async () => {
     })
 })
 
+
 onBeforeUnmount(() => {
     if (map) {
         map.destroy()
@@ -161,6 +174,10 @@ onBeforeUnmount(() => {
     if (piechart) {
         piechart.destroy()
         piechart = null
+    }
+    if (barchart) {
+        barchart.destroy()
+        barchart = null
     }
 })
 
@@ -171,6 +188,7 @@ async function fetchDataFromDirectus() {
 
     totalRegistrations.value = inboundData.value.length
     const institutionsSet = new Set()
+    const purposeCount = {}
     
     inboundData.value.forEach(entry => {
         const countryCode = entry.Kewarganegaraan
@@ -199,8 +217,16 @@ async function fetchDataFromDirectus() {
         } else if (entry.posisi === 'Staf Akademik (Academic Staff)') {
             barChartData.value[5]++
         }
+
+        const purpose = entry.tujuanInbound
+        if (purpose) {
+            purposeCount[purpose] = (purposeCount[purpose] || 0) + 1
+        }
     })
     values.value = countryCodeCount
     totalInstitutions.value = institutionsSet.size
+    purposeData.value = Object.entries(purposeCount)
+        .map(([name, count]) => ({ name, count }))
+        .sort((a, b) => b.count - a.count)
 }
 </script>
