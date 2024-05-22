@@ -15,8 +15,8 @@
 
 .dashboard-board {
     background-color:rgb(227, 227, 227);
-    width: 75%;
-    height: 620px;
+    width: 70%;
+    height: 660px;
     border-radius: 20px;
     margin-bottom: 20px;
     position: relative;
@@ -79,15 +79,15 @@
     height: 50%;
     width: 100%;
     padding-left: 25px;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     display: flex;
 }
 
 .map {
-    width: 48%;
+    width: 42%;
     background-color: white;
-    height: 113%;
-    margin-top: -40px;
+    height: 124%;
+    margin-top: -70px;
     border-radius: 15px;
     margin-right: 20px;
 }
@@ -125,8 +125,8 @@
 
 .reg {
     background-color: white;
-    width: 23%;
-    height: 75%;
+    width: 20%;
+    height: 65%;
     border-radius: 15px;
     margin-right: 20px;
 }
@@ -135,7 +135,7 @@
     margin: 0px;
     padding-left: 30px;
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 17px;
     margin-top: 5px;
 }
 
@@ -146,15 +146,16 @@
 }
 
 #reg-number {
-    font-size: 50px;
+    font-size: 35px;
     margin-top: 15px;
 }
 
 .institution {
     background-color: white;
-    width: 23%;
-    height: 75%;
+    width: 20%;
+    height: 65%;
     border-radius: 15px;
+    margin-right: 20px;
 }
 
 .institution img {
@@ -174,13 +175,13 @@
 .pie {
     background-color: white;
     width: 23%;
-    height: 99%;
+    height: 96%;
     border-radius: 15px;
 }
 
 #piechart {
     margin: auto;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .pie p {
@@ -189,4 +190,24 @@
     padding-left: 20px;
     font-family: Montserrat;
     font-size: 18px;
+}
+
+.bar {
+    background-color: white;
+    width: 54%;
+    height: 96%;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.bar p {
+    margin: 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: Montserrat;
+    font-size: 18px;
+}
+
+#barchart {
+    margin: auto;
 }

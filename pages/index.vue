@@ -20,7 +20,7 @@
                     <div class="button-bawah">
                         <NuxtLink to="/inbound">
                             <div class="button">
-                                <p>Join Now</p>
+                                <button>Join Now</button>
                             </div>
                         </NuxtLink>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="button-bawah">
                         <NuxtLink to="/outbound">
                             <div class="button daftar">
-                                <p>Daftar Sekarang</p>
+                                <button>Daftar Sekarang</button>
                             </div>
                         </NuxtLink>
                     </div>
