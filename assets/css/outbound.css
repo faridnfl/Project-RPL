@@ -223,9 +223,15 @@
     padding: 10px 25px;
     border-radius: 10px;
     font-size: 19px;
+    text-decoration: none;
 }
 
 .outbound-button a {
     text-decoration: none;
     color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white
 }

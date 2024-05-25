@@ -5,13 +5,15 @@
 
 <template>
     <div class="dashboard-isi">
-        <div class="dashboard-nav">
-            <div class="nav-kiri">
-                <p>Inbound</p>
-            </div>
-            <div class="nav-kanan">
-                <p>Outbound</p>
-            </div>
+        <div class="tab-container">
+            <NuxtLink to="/dashboard">
+                <label class="tab_label" for="tab1">Inbound</label>
+            </NuxtLink>
+            <NuxtLink to="/dashoutbound">
+                <label class="tab_label" for="tab2">Outbound</label>
+            </NuxtLink>
+
+            <div class="indicator"></div>
         </div>
         <div class="dashboard-board">
             <div class="board-top">

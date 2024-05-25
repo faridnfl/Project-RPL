@@ -2,8 +2,6 @@
     box-sizing: border-box 
  }
 
- 
-
 .dashboard-isi {
     background-color: rgb(255, 255, 255);
     width: 100%;
@@ -56,7 +54,7 @@
 }
 
 .indicator {
-    content: "tab--1";
+    content: "";
     width: 130px;
     height: 52px;
     background: #9e3030;
@@ -96,20 +94,21 @@
     font-size: 1.2rem;
   
     cursor: pointer;
-
 }
   
   
+.tab--2 ~ .indicator {
+    left: calc(130px + 2px);
+}
   
+
 .nav-kiri {
     width: 50%;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    background-color:rgb(146, 26, 26);
+    border-radius: 30px;
 }
 
 .nav-kiri p  {
@@ -148,7 +147,7 @@
     display: flex;
 }
 
-.map {
+.map-out {
     width: 42%;
     background-color: white;
     height: 124%;
@@ -162,7 +161,7 @@
     margin: auto;
 }
 
-.map p {
+.map-out p {
     margin: 0px;
     padding-top: 20px;
     padding-left: 20px;
@@ -188,7 +187,8 @@
     display: block;
 }
 
-.reg {
+
+.reg-out {
     background-color: white;
     width: 20%;
     height: 65%;
@@ -196,7 +196,7 @@
     margin-right: 20px;
 }
 
-.reg p {
+.reg-out p {
     margin: 0px;
     padding-left: 30px;
     font-family: Montserrat;
@@ -204,18 +204,13 @@
     margin-top: 5px;
 }
 
-.reg img {
+.reg-out img {
     margin-top: 25px;
     margin-left: 30px;
     width: 12%;
 }
 
-#reg-number {
-    font-size: 35px;
-    margin-top: 15px;
-}
-
-.institution {
+.institution-out {
     background-color: white;
     width: 20%;
     height: 65%;
@@ -223,126 +218,16 @@
     margin-right: 20px;
 }
 
-.institution img {
+.institution-out img {
     margin-top: 25px;
     margin-left: 30px;
     width: 13%;
 }
 
-.institution p {
+.institution-out p {
     margin: 0px;
     padding-left: 30px;
     font-family: Montserrat;
     font-size: 18px;
     margin-top: 5px;
-}
-
-.pie {
-    background-color: white;
-    width: 26%;
-    height: 96%;
-    border-radius: 15px;
-    margin-right: 20px;
-}
-
-#piechart {
-    margin: auto;
-    margin-top: 5px;
-}
-
-.pie p {
-    margin: 0px;
-    padding-top: 20px;
-    padding-left: 20px;
-    font-family: Montserrat;
-    font-size: 18px;
-}
-
-.bar {
-    background-color: white;
-    width: 54%;
-    height: 96%;
-    border-radius: 15px;
-    margin-top: 15px;
-}
-
-.bar p {
-    margin: 0px;
-    padding-top: 20px;
-    padding-left: 20px;
-    font-family: Montserrat;
-    font-size: 18px;
-}
-
-#barchart {
-    margin: auto;
-}
-
-.tujuan {
-    background-color: white;
-    width: 26%;
-    height: 96%;
-    border-radius: 15px;
-    margin-right: 20px;
-}
-
-.tujuan p {
-    margin: 0px;
-    padding-top: 20px;
-    padding-left: 20px;
-    font-family: Montserrat;
-    font-size: 18px;
-}
-
-.list-tujuan {
-    width: 100%;
-    height: 70%;
-    overflow-y: none;
-    padding: 20px;
-
-}
-
-.tujuan ul {
-    padding: 0;
-    margin: 0;
-}
-
-.purpose-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    position: relative;
-    padding-left: 25px;
-}
-
-
-.purpose-item::before {
-    content: '';
-    position: absolute;
-    left: 5px; 
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #c92323; 
-}
-
-.purpose-name, .purpose-count {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-}
-
-.purpose-name {
-    flex: 1;
-}
-
-.purpose-count {
-    margin-left: 10px;
-}
-
-.tujuan li {
-    list-style: none;
 }
