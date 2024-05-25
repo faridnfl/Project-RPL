@@ -18,8 +18,11 @@
               <input type="text" v-model="formOutbound.email" placeholder="Jawaban Anda...">
           </div>
           <div class="form2-outbound"> 
-              <p>Fakultas (Faculty)*</p>
-              <input type="text" v-model="formOutbound.fakultas" placeholder="Jika bertugas tidak atas nama Fakultas silahkan pilih Universits Hasanuddin">
+            <p>Fakultas (Faculty)*</p>
+            <input v-model="formOutbound.fakultas" list="facultyList" placeholder="Jika bertugas tidak atas nama Fakultas silahkan pilih Universitas Hasanuddin" autocomplete="off">
+            <datalist id="facultyList">
+              <option v-for="faculty in faculties" :key="faculty" :value="faculty">{{ faculty }}</option>
+            </datalist>
               <p>Posisi (Position)*</p>
               <select v-model="formOutbound.posisi">
                 <option disabled selected value="">Pilih...</option>
@@ -225,4 +228,25 @@ const countries = {
   'United Arab Emirates': 'AE', 'United Kingdom': 'GB', 'United States of America': 'US', 'Uruguay': 'UY', 'Uzbekistan': 'UZ', 'Vanuatu': 'VU', 'Venezuela': 'VE', 'Vietnam': 'VN', 'Yemen': 'YE',
   'Zambia': 'ZM', 'Zimbabwe': 'ZW'
 }
+
+const faculties = [
+  'Ekonomi dan Bisnis',
+  'Hukum',
+  'Kedokteran',
+  'Teknik',
+  'Ilmu Sosial dan Ilmu Politik',
+  'Ilmu Budaya',
+  'Peternakan',
+  'Matematika dan Ilmu Pengetahuan Alam',
+  'Pertanian',
+  'Kedokteran Gigi',
+  'Kesehatan Masyarakat',
+  'Ilmu Kelautan dan Perikanan',
+  'Kehutanan',
+  'Farmasi',
+  'Keperawatan',
+  'Vokasi',
+  'Universitas Hasanuddin'
+];
+
 </script>
