@@ -31,7 +31,7 @@
                 </div>
                 <div class="pie-out">
                     <p>Type Of Program</p>
-                    <canvas id="piechart" style="width: 70%; height: 50%"></canvas>
+                    <canvas id="piechart" style="width: 75%; height: 50%"></canvas>
                 </div>
                 <div class="fakultas">
                     <p>Faculties</p>

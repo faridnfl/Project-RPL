@@ -29,7 +29,7 @@
                 </div>
                 <div class="pie">
                     <p>Type Of Program</p>
-                    <canvas id="piechart" style="width: 70%; height: 50%"></canvas>
+                    <canvas id="piechart" style="width: 75%; height: 50%"></canvas>
                 </div>
                 <div class="tujuan">
                     <p>Purpose of Inbound</p>
