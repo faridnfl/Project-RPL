@@ -13,12 +13,15 @@
     "@amcharts/amcharts5": "^5.9.7",
     "@amcharts/amcharts5-geodata": "^5.1.2",
     "@nuxtjs/google-fonts": "^3.0.0-1",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "chart.js": "^4.4.2",
     "jsvectormap": "^1.5.3",
     "jvectormap-next": "^3.1.1",
     "nuxt": "^3.11.1",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.2.0"
