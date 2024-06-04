@@ -184,7 +184,7 @@ onBeforeUnmount(() => {
 })
 
 async function fetchDataFromDirectus() {
-    const response = await fetch('http://localhost:8055/items/inbound')
+    const response = await fetch('http://directusinboundoutbound:8055/items/inbound')
     const data = await response.json()
     inboundData.value = data.data
 
