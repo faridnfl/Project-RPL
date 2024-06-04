@@ -184,7 +184,7 @@ onBeforeUnmount(() => {
 })
 
 async function fetchDataFromDirectus() {
-    const response = await fetch('https://directusinboundoutbound:8055/items/inbound')
+    const response = await fetch('https://directusinboundoutbound.up.railway.app/items/inbound')
     const data = await response.json()
     inboundData.value = data.data
 
