@@ -158,7 +158,7 @@ const handleSubmit = async () => {
   }
   
   try {
-    const { data: responseData } = await $fetch('http://localhost:8055/items/Outbound', {
+    const { data: responseData } = await $fetch('https://directusinboundoutbound.up.railway.app/items/outbound', {
       method: 'post',
       body: {
         namaPenginput: formOutbound.value.namaPenginput,
@@ -193,7 +193,7 @@ const handleFileUpload = async (event) => {
     const formData = new FormData();
     formData.append('file', file);
     
-    const response = await fetch('http://localhost:8055/files', {
+    const response = await fetch('https://directusinboundoutbound.up.railway.app/files', {
       method: 'POST',
       body: formData,
     });
