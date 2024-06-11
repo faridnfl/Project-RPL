@@ -202,11 +202,11 @@ const handleSubmit = async () => {
        console.error('Error submitting form:', error);
       }
     }
-  };
+}
+
 
 const handleFileUpload = async (event) => {
   const file = event.target.files[0];
-  
   try {
     const formData = new FormData();
     formData.append('file', file);

@@ -152,11 +152,22 @@ const handleCountryChange = () => {
 const handleSubmit = async () => {
   for (const key in formOutbound.value) {
     if (!formOutbound.value[key]) {
-      alert(`${fieldNames[key]} harus diisi!`);
+      alert(`${fieldNames[key]} must be filled!`);
       return;
     }
   }
   
+  try {
+    const response = await fetch(`https://directusinboundoutbound.up.railway.app/files/${formOutbound.value.dokumenPendukung}`);
+    if (!response.ok) {
+      alert('Invalid document ID!');
+    }
+  } catch (error) {
+    alert('Error checking document ID!');
+    console.error('Error:', error);
+  }
+
+
   try {
     const { data: responseData } = await $fetch('https://directusinboundoutbound.up.railway.app/items/outbound', {
       method: 'post',
@@ -186,9 +197,9 @@ const handleSubmit = async () => {
   }
 };
 
+
 const handleFileUpload = async (event) => {
   const file = event.target.files[0];
-  
   try {
     const formData = new FormData();
     formData.append('file', file);
@@ -198,34 +209,12 @@ const handleFileUpload = async (event) => {
       body: formData,
     });
 
-    const textResponse = await response.text(); // Ambil respon sebagai teks
-    console.log('Raw response:', textResponse);
+    const responseData = await response.json();
+    formOutbound.value.dokumenPendukung = responseData.data.id; 
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    // Cek apakah respon kosong
-    if (!textResponse) {
-      throw new Error('Empty response from server');
-    }
-
-    let responseData;
-    try {
-      responseData = JSON.parse(textResponse); // Parsing secara manual
-    } catch (jsonError) {
-      throw new Error('Failed to parse JSON response: ' + jsonError.message);
-    }
-
-    // Pastikan data dan id ada dalam respon
-    if (!responseData.data || !responseData.data.id) {
-      throw new Error('Invalid response format');
-    }
-
-    formInbound.value.dokumen = responseData.data.id; 
     console.log(responseData);
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error(error);
   }
 }
 

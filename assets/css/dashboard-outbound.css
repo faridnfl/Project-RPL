@@ -279,6 +279,7 @@
     height: 96%;
     border-radius: 15px;
     margin-right: 20px;
+    overflow-y: auto;
 }
 
 .fakultas p {
