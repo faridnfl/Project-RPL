@@ -157,14 +157,21 @@ const handleCountryChange = () => {
 };
 
 const handleSubmit = async () => {
-  try {
-    const response = await fetch(`https://directusinboundoutbound.up.railway.app/files`);
-    if (!response.ok) {
+  for (const key in formInbound.value) {
+    if (!formInbound.value[key]) {
+      alert(`${fieldNames[key]} must be filled!`);
       return;
     }
+  }
+  
+  try {
+    const response = await fetch(`https://directusinboundoutbound.up.railway.app/files/${formInbound.value.dokumen}`);
+    if (!response.ok) {
+      alert('Invalid document ID!');
+    }
   } catch (error) {
+    alert('Error checking document ID!');
     console.error('Error:', error);
-    return;
   }
 
   try {
@@ -192,13 +199,10 @@ const handleSubmit = async () => {
     console.log(responseData); 
   } catch (error) {
     for (const key in formInbound.value) {
-      if (!formInbound.value[key]) {
-        alert(`${fieldNames[key]} must be filled!`);
-        return;
+       console.error('Error submitting form:', error);
       }
     }
-  }
-};
+  };
 
 const handleFileUpload = async (event) => {
   const file = event.target.files[0];
