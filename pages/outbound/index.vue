@@ -198,14 +198,38 @@ const handleFileUpload = async (event) => {
       body: formData,
     });
 
-    const responseData = await response.json();
-    formOutbound.value.dokumenPendukung = responseData.data.id; 
+    const textResponse = await response.text(); // Ambil respon sebagai teks
+    console.log('Raw response:', textResponse);
 
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Cek apakah respon kosong
+    if (!textResponse) {
+      throw new Error('Empty response from server');
+    }
+
+    let responseData;
+    try {
+      responseData = JSON.parse(textResponse); // Parsing secara manual
+    } catch (jsonError) {
+      throw new Error('Failed to parse JSON response: ' + jsonError.message);
+    }
+
+    // Pastikan data dan id ada dalam respon
+    if (!responseData.data || !responseData.data.id) {
+      throw new Error('Invalid response format');
+    }
+
+    formInbound.value.dokumen = responseData.data.id; 
     console.log(responseData);
   } catch (error) {
-    console.error(error);
+    console.error('Error:', error.message);
   }
 }
+
+
 
 const countries = {
   'Afghanistan': 'AF', 'Albania': 'AL', 'Algeria': 'DZ', 'Andorra': 'AD', 'Angola': 'AO', 'Antigua and Barbuda': 'AG', 'Argentina': 'AR', 'Armenia': 'AM', 'Australia': 'AU', 'Austria': 'AT',

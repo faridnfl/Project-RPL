@@ -157,14 +157,16 @@ const handleCountryChange = () => {
 };
 
 const handleSubmit = async () => {
-
-  for (const key in formInbound.value) {
-    if (!formInbound.value[key]) {
-      alert(`${fieldNames[key]} must be filled!`);
+  try {
+    const response = await fetch(`https://directusinboundoutbound.up.railway.app/files`);
+    if (!response.ok) {
       return;
     }
+  } catch (error) {
+    console.error('Error:', error);
+    return;
   }
-  
+
   try {
     const { data: responseData } = await $fetch('https://directusinboundoutbound.up.railway.app/items/inbound', {
       method: 'post',
@@ -189,7 +191,12 @@ const handleSubmit = async () => {
     await navigateTo('/responden')
     console.log(responseData); 
   } catch (error) {
-    console.error('Error submitting form:', error);
+    for (const key in formInbound.value) {
+      if (!formInbound.value[key]) {
+        alert(`${fieldNames[key]} must be filled!`);
+        return;
+      }
+    }
   }
 };
 

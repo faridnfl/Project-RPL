@@ -284,6 +284,7 @@
     height: 96%;
     border-radius: 15px;
     margin-right: 20px;
+    overflow-y: auto;
 }
 
 .tujuan p {
@@ -300,6 +301,10 @@
     overflow-y: none;
     padding: 20px;
 
+}
+
+.list-tujuan ul {
+    height: 100px;
 }
 
 .tujuan ul {
