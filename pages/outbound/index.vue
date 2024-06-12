@@ -158,12 +158,11 @@ const handleSubmit = async () => {
   }
   
   try {
-    const response = await fetch(`https://directusinboundoutbound.up.railway.app/files/${formOutbound.value.dokumenPendukung}`);
+    const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files/${formOutbound.value.dokumenPendukung}`);
     if (!response.ok) {
-      alert('Invalid document ID!');
+      console.error('Error:', error);
     }
   } catch (error) {
-    alert('Error checking document ID!');
     console.error('Error:', error);
   }
 

@@ -165,7 +165,7 @@ const handleSubmit = async () => {
   }
   
   try {
-    const response = await fetch(`https://directusinboundoutbound.up.railway.app/files/${formInbound.value.dokumen}`);
+    const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files/${formInbound.value.dokumen}`);
     if (!response.ok) {
       alert('Invalid document ID!');
     }
