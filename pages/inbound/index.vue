@@ -157,21 +157,18 @@ const handleCountryChange = () => {
 };
 
 const handleSubmit = async () => {
+  try {
+    const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files/${formInbound.value.dokumen}`);
+  } catch (error) {
+    alert('Error checking document ID!');
+    console.error('Error:', error);
+  }
+
   for (const key in formInbound.value) {
     if (!formInbound.value[key]) {
       alert(`${fieldNames[key]} must be filled!`);
       return;
     }
-  }
-  
-  try {
-    const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files/${formInbound.value.dokumen}`);
-    if (!response.ok) {
-      alert('Invalid document ID!');
-    }
-  } catch (error) {
-    alert('Error checking document ID!');
-    console.error('Error:', error);
   }
 
   try {

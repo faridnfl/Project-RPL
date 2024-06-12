@@ -150,13 +150,6 @@ const handleCountryChange = () => {
 
 
 const handleSubmit = async () => {
-  for (const key in formOutbound.value) {
-    if (!formOutbound.value[key]) {
-      alert(`${fieldNames[key]} must be filled!`);
-      return;
-    }
-  }
-  
   try {
     const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files/${formOutbound.value.dokumenPendukung}`);
     if (!response.ok) {
@@ -164,6 +157,13 @@ const handleSubmit = async () => {
     }
   } catch (error) {
     console.error('Error:', error);
+  }
+
+  for (const key in formOutbound.value) {
+    if (!formOutbound.value[key]) {
+      alert(`${fieldNames[key]} must be filled!`);
+      return;
+    }
   }
 
 
