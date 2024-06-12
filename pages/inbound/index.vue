@@ -134,6 +134,8 @@ const formInbound = ref({
   dokumen: '',
 });
 
+const isUploading = ref(false);
+
 const fieldNames = {
   namaPenginput: 'Name of Data Submitter',
   namaTamu: 'Guest Name',
@@ -159,6 +161,7 @@ const handleCountryChange = () => {
 const handleFileUpload = async (event) => {
   const file = event.target.files[0];
   try {
+    isUploading.value = true; 
     const formData = new FormData();
     formData.append('file', file);
     
@@ -173,21 +176,22 @@ const handleFileUpload = async (event) => {
     console.log(responseData);
   } catch (error) {
     console.error(error);
+  } finally {
+    isUploading.value = false; 
   }
 }
 
 const handleSubmit = async () => {
-  try {
-    const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files/${formInbound.value.dokumen}`);
-  } catch (error) {
-    console.error('Error:', error);
-  }
-
   for (const key in formInbound.value) {
     if (!formInbound.value[key]) {
       alert(`${fieldNames[key]} must be filled!`);
       return;
     }
+  }
+
+  if (isUploading.value) {
+    alert('Please wait until the file upload is complete.');
+    return;
   }
 
   try {
