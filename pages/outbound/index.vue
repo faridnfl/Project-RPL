@@ -152,9 +152,8 @@ const handleCountryChange = () => {
 const handleSubmit = async () => {
   try {
     const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files/${formOutbound.value.dokumenPendukung}`);
-    if (!response.ok) {
-      console.error('Error:', error);
-    }
+    const responseData = await response.json();
+    formOutbound.value.dokumenPendukung = responseData.data.id; 
   } catch (error) {
     console.error('Error:', error);
   }
