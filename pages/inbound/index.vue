@@ -156,11 +156,29 @@ const handleCountryChange = () => {
   formInbound.value.kewarganegaraan = countries[formInbound.value.kewarganegaraanDisplay] || '';
 };
 
+const handleFileUpload = async (event) => {
+  const file = event.target.files[0];
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    const response = await fetch('https://directusinboundoutbound.up.railway.app/files', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const responseData = await response.json();
+    formInbound.value.dokumen = await responseData.data.id;
+
+    console.log(responseData);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const handleSubmit = async () => {
   try {
-    const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files`);
-    const responseData = await response.json();
-    formInbound.value.dokumen = responseData.data.id;
+    const response = await $fetch(`https://directusinboundoutbound.up.railway.app/files/${formInbound.value.dokumen}`);
   } catch (error) {
     console.error('Error:', error);
   }
@@ -202,26 +220,6 @@ const handleSubmit = async () => {
     }
 }
 
-
-const handleFileUpload = async (event) => {
-  const file = event.target.files[0];
-  try {
-    const formData = new FormData();
-    formData.append('file', file);
-    
-    const response = await fetch('https://directusinboundoutbound.up.railway.app/files', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const responseData = await response.json();
-    formInbound.value.dokumen = responseData.data.id; 
-
-    console.log(responseData);
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 const countries = {
   'Afghanistan': 'AF', 'Albania': 'AL', 'Algeria': 'DZ', 'Andorra': 'AD', 'Angola': 'AO', 'Antigua and Barbuda': 'AG', 'Argentina': 'AR', 'Armenia': 'AM', 'Australia': 'AU', 'Austria': 'AT',

@@ -208,7 +208,7 @@ const handleFileUpload = async (event) => {
     });
 
     const responseData = await response.json();
-    formOutbound.value.dokumenPendukung = responseData.data.id; 
+    formOutbound.value.dokumenPendukung = await responseData.data.id; 
 
     console.log(responseData);
   } catch (error) {
