@@ -153,16 +153,16 @@ const handleCountryChange = () => {
 
 const handleSubmit = async () => {
 
+  if (isUploading.value) {
+    alert('Please wait until the file upload is complete.');
+    return;
+  }
+
   for (const key in formOutbound.value) {
     if (!formOutbound.value[key]) {
       alert(`${fieldNames[key]} must be filled!`);
       return;
     }
-  }
-
-  if (isUploading.value) {
-    alert('Please wait until the file upload is complete.');
-    return;
   }
 
   try {

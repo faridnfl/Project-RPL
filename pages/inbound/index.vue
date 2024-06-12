@@ -182,16 +182,16 @@ const handleFileUpload = async (event) => {
 }
 
 const handleSubmit = async () => {
+  if (isUploading.value) {
+    alert('Please wait until the file upload is complete.');
+    return;
+  }
+
   for (const key in formInbound.value) {
     if (!formInbound.value[key]) {
       alert(`${fieldNames[key]} must be filled!`);
       return;
     }
-  }
-
-  if (isUploading.value) {
-    alert('Please wait until the file upload is complete.');
-    return;
   }
 
   try {
